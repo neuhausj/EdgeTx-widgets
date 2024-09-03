@@ -34,6 +34,7 @@ local widget = { }
 function widget.refresh(event, touchState)
   if options.Source ~= nil and options.Threshold ~= nil then
     local currentValue = getValue(options.Source)/10.24 -- convert in %
+    lcd.drawCircle(zone.w/2, zone.h/2, math.min(zone.w,zone.h)/2, BLACK)
     -- When threshold is reached, either blink or set color depending on widget setting
     if (currentValue > options.Threshold and options.Blink==0) or (currentValue > options.Threshold and options.Blink==1 and blink) then
       lcd.drawFilledCircle(zone.w/2, zone.h/2, math.min(zone.w,zone.h)/2-2, options.Color_On)
